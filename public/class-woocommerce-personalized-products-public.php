@@ -154,7 +154,9 @@ class Woocommerce_Personalized_Products_Public {
 			        </div>
 			        </div>
 			        </div>
-			        <button id='save-generator' class='btn btn-default'>Save This</button>";
+			        <div class='im-centered' style='padding: 10px'>
+			        	<button id='save-generator' class='btn btn-default'>Save This</button>
+			        </div>";
 
 				break;
 			case 'friends-white':
