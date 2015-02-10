@@ -1,0 +1,42 @@
+@font-face {
+    font-family: breakingBadFont;
+    src: url(../fonts/BreakingBad.otf);
+}
+
+.im-centered { 
+    margin: auto;
+    max-width: 560px;
+    text-align: center;                 
+}
+
+#breaking-bad{
+    margin-top: 30px;
+    background-color: #027757;
+    height: 220px;
+    overflow: hidden;
+
+}
+
+#bb-body{
+    color: #FFFFFF;
+    padding: 35px 0px 0px 10px;
+    text-align: center
+}
+
+.name{
+    font-family: breakingBadFont;
+    font-size: 68px;
+    vertical-align: baseline;
+}
+
+*{margin:0;padding: 0; line-height: normal;}
+.name.first div, .name.last div{display: inline-block;}
+.name.first img, .name.last img{width: 70px; height: 70px;}
+.name.first .element, .name.last .element{width: 70px; height: 70px; position: relative; top: -9px;}
+.name.first .left{ width: 160px; text-align: right; padding-right: 4px;}
+.name.first .right{width: 230px;text-align: left; padding-left: 4px;}
+
+.name.last .left{width: 230px; text-align: right;  padding-right: 4px;}
+.name.last .right{width: 160px;text-align: left;  padding-left: 4px;}
+.name.first .left, .name.first .right, .name.last .left, .name.last .right{letter-spacing: 1px;}
+
