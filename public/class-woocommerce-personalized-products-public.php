@@ -81,7 +81,7 @@ class Woocommerce_Personalized_Products_Public {
 			wp_enqueue_style( $this->name.'_bootstrap', plugin_dir_url( __FILE__ ) . '/../../assets/css/bootstrap.min.css', array(), $this->version, 'all' );
 			wp_enqueue_style( $this->name.'_'.$wc_personalized_product, plugin_dir_url( __FILE__ ) . '/../../assets/css/'.$wc_personalized_product.'.css', array(), $this->version, 'all' );
 		}
-		
+
 
 	}
 
@@ -109,7 +109,7 @@ class Woocommerce_Personalized_Products_Public {
 
 		if(!empty($wc_personalized_product) && $wc_personalized_product != 'none'){
 			wp_enqueue_script( $this->name.'_angular', plugin_dir_url( __FILE__ ) . '/../../assets/js/angular.min.js',  array(),$this->version, FALSE );
-			wp_enqueue_script( $this->name.'_'.$wc_personalized_product, plugin_dir_url( __FILE__ ) . '/../../assets/js/'.$wc_personalized_product.'.js', array() , $this->version, FALSE );	
+			wp_enqueue_script( $this->name.'_'.$wc_personalized_product, plugin_dir_url( __FILE__ ) . '/../../assets/js/'.$wc_personalized_product.'.js', array() , $this->version, FALSE );
 			wp_enqueue_script( $this->name, plugin_dir_url(__FILE__) . '/js/woocommerce-personalized-products-public.js', array( 'jquery' ), $this->version, FALSE );
 		}
 	}
@@ -118,7 +118,7 @@ class Woocommerce_Personalized_Products_Public {
 	public function wc_personalized_product_tab( $tabs ) {
 		global $post;
 		$wc_personalized_product = get_post_meta( $post->ID, 'wc_personalized_product', true );
-		
+
 		// Adds the new tab
 		if(!empty($wc_personalized_product) && $wc_personalized_product != 'none'){
 			$tabs['wc_personalized_product_tab'] = array(
@@ -138,7 +138,7 @@ class Woocommerce_Personalized_Products_Public {
 		echo "<script>
 				var dirName = '".plugin_dir_url( __FILE__ )."';
 				var patternOnly = false;
-			 </script>"; 
+			 </script>";
 		switch ($wc_personalized_product) {
 			case 'breaking-bad':
 			   echo "<div ng-app='breakingBad'>
@@ -173,16 +173,16 @@ class Woocommerce_Personalized_Products_Public {
 
 	/**
 	 * The following hook will add a input field right before "add to cart button"
-	 * will be used for getting Name on t-shirt 
+	 * will be used for getting Name on t-shirt
 	 */
 	function wc_personalized_product_cart_field() {
 		global $post;
 		$wc_personalized_product = get_post_meta( $post->ID, 'wc_personalized_product', true );
-		
+
 		if(!empty($wc_personalized_product) && $wc_personalized_product != 'none'){
 			echo '<input id="personalize" type="hidden" name="personalize" value="" />';
 		}
-	    
+
 	}
 
 	function wc_personalized_product_cart_field_validation() {
@@ -191,7 +191,7 @@ class Woocommerce_Personalized_Products_Public {
 			wc_add_notice( __( 'Please enter a Name for Printing…', 'woocommerce' ), 'error' );
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -204,7 +204,7 @@ class Woocommerce_Personalized_Products_Public {
 
 
 	function render_meta_on_cart_item( $title = null, $cart_item = null, $cart_item_key = null ) {
-		$generator = WC()->session->get( $cart_item_key.'_personalize');	
+		$generator = WC()->session->get( $cart_item_key.'_personalize');
 		if( $cart_item_key && is_cart() && $generator != '') {
 			$page = get_page_by_title('Pattern Generator');
 			$permalink = get_permalink($page->ID);
@@ -232,7 +232,7 @@ class Woocommerce_Personalized_Products_Public {
 		$generator = WC()->session->get( $cart_item_key.'_personalize');
 		if($generator != ''){
 			wc_add_order_item_meta( $item_id, "pattern", $generator);
-		}		
+		}
 	}
 
 	function tshirt_force_individual_cart_items($cart_item_data, $product_id)
@@ -245,6 +245,9 @@ class Woocommerce_Personalized_Products_Public {
 
 
 	function render_meta_on_order_item( $meta ) {
+		if(base64_encode(base64_decode($meta, true)) !== $meta){
+			return $meta;
+		}
 		$page = get_page_by_title('Pattern Generator');
 		$permalink = get_permalink($page->ID);
 		return '<a target="_blank" href="'.$permalink.'?key='.$meta.'" >View Pattern</a>';
@@ -252,7 +255,7 @@ class Woocommerce_Personalized_Products_Public {
 
 
 	function wc_personalized_products_pattern($atts, $content=null){
- 
+
 	    $key = $_GET['key'];
 	    $r = 'Invalid Pattern';
 	    if(isset($key)){
@@ -268,10 +271,10 @@ class Woocommerce_Personalized_Products_Public {
 
 				wp_enqueue_style( $this->name.'_bootstrap', plugin_dir_url( __FILE__ ) . '/../../assets/css/bootstrap.min.css', array(), $this->version, 'all' );
 				wp_enqueue_style( $this->name.'_'.$wc_personalized_product, plugin_dir_url( __FILE__ ) . '/../../assets/css/'.$key[0].'.css', array(), $this->version, 'all' );
-				
+
 				wp_enqueue_script( $this->name.'_angular', plugin_dir_url( __FILE__ ) . '/../../assets/js/angular.min.js',  array(),$this->version, FALSE );
 				wp_enqueue_script( $this->name.'_'.$key[0], plugin_dir_url( __FILE__ ) . '/../../assets/js/'.$key[0].'.js', array() , $this->version, FALSE );
-				  
+
 				switch ($key[0]) {
 					case 'breaking-bad':
 					   $r .= 	"<div ng-app='breakingBad'>
