@@ -24,7 +24,7 @@ angular.module('breakingBad', [])
             restrict: "AE",
             replace: true,
             link: function (scope, element) {
-                
+
                 scope.$watch('[name , counter]', function () {
                     var name = scope.name.replace(/[^a-zA-Z ]/g, '');
                     var names =  name.split(" ");
@@ -39,7 +39,7 @@ angular.module('breakingBad', [])
                                        "</div><div class='name last'>"
                                        +last+
                                         "</div></div></div>";
-                        
+
                     }else{
                         scope.disabled = true;
                         scope.counter = 0;
@@ -80,7 +80,7 @@ angular.module('breakingBad', [])
                     if(name.length < 3){
                         return '';
                     }
-                    
+
                     var userElements = [];
                     r = name;
                     for(i=0; i<elements.length; i++){
@@ -117,9 +117,17 @@ angular.module('breakingBad', [])
 
                 // Genrate the required HTML o/p
                 function generate(text, symbol, imdex){
-                    return "<div class='left'>"+text.slice(0, index)+ "</div>" +
-                           "<div class='element'><img  src='"+dirName+"/../../assets/elements/" + symbol + ".png'/></div>" + 
-                           "<div class='right'>" + text.slice(index + symbol.length, text.length) +
+                    var left = text.slice(0, index);
+                    if(left.length == 0){
+                        left = '&nbsp;';
+                    }
+                    var right = text.slice(index + symbol.length, text.length);
+                    if(right.length == 0){
+                        right = '&nbsp;';
+                    }
+                    return "<div class='left'>"+ left + "</div>" +
+                           "<div class='element'><img  src='"+dirName+"/../../assets/elements/" + symbol + ".png'/></div>" +
+                           "<div class='right'>" + right +
                            "</div>";
                 }
 
