@@ -160,10 +160,34 @@ class Woocommerce_Personalized_Products_Public {
 
 				break;
 			case 'friends-white':
-
+			   echo "<div ng-app='friends'>
+					<div class='im-centered' ng-controller='friendsCtrl'>
+			        <div class='input'>
+			            <input class='form-control' style='text-align: center' autofocus type='text' ng-model='name'>
+			        </div>
+			        <div class='row'>
+			            <ng-friends></ng-friends>
+			        </div>
+			        </div>
+			        </div>
+			        <div class='im-centered' style='padding: 10px'>
+			        	<button id='save-generator' class='btn btn-default'>Save This</button>
+			        </div>";
 				break;
 			case 'friends-black':
-
+			   echo "<div ng-app='friends'>
+					<div class='im-centered' ng-controller='friendsCtrl'>
+			        <div class='input'>
+			            <input class='form-control' style='text-align: center' autofocus type='text' ng-model='name'>
+			        </div>
+			        <div class='row'>
+			            <ng-friends></ng-friends>
+			        </div>
+			        </div>
+			        </div>
+			        <div class='im-centered' style='padding: 10px'>
+			        	<button id='save-generator' class='btn btn-default'>Save This</button>
+			        </div>";
 				break;
 			default:
 				# code...
@@ -287,10 +311,22 @@ class Woocommerce_Personalized_Products_Public {
 
 						break;
 					case 'friends-white':
-
+					   $r .= 	"<div ng-app='friends'>
+								<div class='im-centered' ng-controller='friendsCtrl'>
+						        <div class='row'>
+						            <ng-friends></ng-friends>
+						        </div>
+						        </div>
+						        </div>";
 						break;
 					case 'friends-black':
-
+					   $r .= 	"<div ng-app='friends'>
+								<div class='im-centered' ng-controller='friendsCtrl'>
+						        <div class='row'>
+						            <ng-friends></ng-friends>
+						        </div>
+						        </div>
+						        </div>";
 						break;
 					default:
 						# code...
