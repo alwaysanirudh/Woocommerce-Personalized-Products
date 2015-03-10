@@ -144,7 +144,7 @@ class Woocommerce_Personalized_Products_Public {
 			   echo "<div ng-app='breakingBad'>
 					<div class='im-centered' ng-controller='bbCtrl'>
 			        <div class='input-group'>
-			            <input class='form-control' style='text-align: center' autofocus type='text' ng-model='name'>
+			            <input class='form-control' style='text-align: center' autofocus type='text' ng-model='name' required maxlength=17>
 			            <span class='input-group-btn'>
 			                <button class='btn btn-default' ng-disabled='disabled' ng-click='tryAgain()'>Try Again!!</button>
 			            </span>
@@ -163,7 +163,7 @@ class Woocommerce_Personalized_Products_Public {
 			   echo "<div ng-app='friends'>
 					<div class='im-centered' ng-controller='friendsCtrl'>
 			        <div class='input'>
-			            <input class='form-control' style='text-align: center' autofocus type='text' ng-model='name'>
+			            <input class='form-control' style='text-align: center' autofocus type='text' ng-model='name' required maxlength=10>
 			        </div>
 			        <div class='row'>
 			            <ng-friends></ng-friends>
@@ -178,7 +178,7 @@ class Woocommerce_Personalized_Products_Public {
 			   echo "<div ng-app='friends'>
 					<div class='im-centered' ng-controller='friendsCtrl'>
 			        <div class='input'>
-			            <input class='form-control' style='text-align: center' autofocus type='text' ng-model='name'>
+			            <input class='form-control' style='text-align: center' autofocus type='text' ng-model='name' required maxlength=10>
 			        </div>
 			        <div class='row'>
 			            <ng-friends></ng-friends>
