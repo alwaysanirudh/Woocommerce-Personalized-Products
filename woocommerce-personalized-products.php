@@ -67,9 +67,9 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/class-woocommerce-personali
  * @since    1.0.0
  */
 function run_woocommerce_personalized_products() {
-
-	$plugin = new Woocommerce_Personalized_Products();
-	$plugin->run();
-
+  if( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+  	$plugin = new Woocommerce_Personalized_Products();
+  	$plugin->run();
+  }
 }
 run_woocommerce_personalized_products();
